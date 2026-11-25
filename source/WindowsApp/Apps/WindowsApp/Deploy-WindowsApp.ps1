@@ -202,8 +202,7 @@ If ($DeploymentType -ne "Uninstall") {
 
     # Provision the app - registers automatically for new users and updates existing user profiles
     Write-Output "Provisioning Windows App"
-    Add-AppxProvisionedPackage -Online -PackagePath $MSIXPath -DependencyPackagePath $DependenciesPath -SkipLicense
-    
+    Add-AppxProvisionedPackage -Online -PackagePath $MSIXPath -DependencyPackagePath $DependenciesPath -SkipLicense -Regions All
     if ($tempDir -and (Test-Path -Path $tempDir)) {
         Remove-Item -Path $tempDir -Recurse -Force -ErrorAction SilentlyContinue
     }
